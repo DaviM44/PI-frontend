@@ -9,24 +9,21 @@
         <div class="card-body col-sm-6 mx-auto text-black" style="background-color: rd;">
             <h3 class="mb-5 text-uppercase text-center">Cadastro de Professor</h3>
 
-            <div class="row">
-              <div class="col-md-6 mb-4">
-                <div class="form-outline">
-                <label class="form-label" for="form3Example1m">Primeiro nome</label>
-                <input type="text" id="form3Example1m" class="form-control form-control-lg" />
-                </div>
-              </div>
-              <div class="col-md-6 mb-4">
-                <div class="form-outline">
-                    <label class="form-label" for="form3Example1n">Último nome</label>
-                  <input type="text" id="form3Example1n" class="form-control form-control-lg" />
 
+
+            <form [formGroup]="formGroupProf">
+            <div class="row" >
+              <div class="mb-4" >
+                <div class="form-outline">
+                <label class="form-label" for="form3Example1m">Nome</label>
+                <input type="text" id="form3Example1m" class="form-control form-control-lg" formControlName="nome" />
                 </div>
               </div>
+              
             </div>
             <div class="form-outline mb-4">
                 <label class="form-label" for="form3Example8">Endereço de Email</label>
-              <input type="text" id="form3Example8" class="form-control form-control-lg" />
+              <input type="text" id="form3Example8" class="form-control form-control-lg" formControlName="email" />
             </div>
 
             <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
@@ -47,14 +44,15 @@
             </div>
             <div class="form-outline mb-4">
             <label class="form-label" for="form3Example90">Telefone</label>
-              <input type="text" id="form3Example90" class="form-control form-control-lg" />
+              <input type="text" id="form3Example90" class="form-control form-control-lg" formControlName="telefone" />
             </div>
             <div class="d-flex d-flex justify-content-between">
               <button type="button" class="btn btn-danger btn-lg" style="width: 300px;">Cancelar</button>
-              <button type="button" class="btn btn-success btn-lg" style="width: 300px;">Cadastrar</button>
+              <button type="button" class="btn btn-success btn-lg" style="width: 300px;" (click)="save()">Cadastrar</button>
             </div>
-
+          </form>
           </div>
+          
 
 
 
