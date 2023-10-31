@@ -4,11 +4,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ReactiveFormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { TelainicialComponent } from './telainicial/telainicial.component';
 import { CadastrarprofComponent } from './cadastrarprof/cadastrarprof.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppRoutingModule,
     NgbModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
