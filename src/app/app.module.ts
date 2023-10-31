@@ -9,6 +9,7 @@ import { TelainicialComponent } from './telainicial/telainicial.component';
 import { CadastrarprofComponent } from './cadastrarprof/cadastrarprof.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CadastrarsalaComponent } from './cadastrarsala/cadastrarsala.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
     NavbarComponent,
     LoginComponent,
     TelainicialComponent,
-    CadastrarprofComponent
+    CadastrarprofComponent,
+    CadastrarsalaComponent
   ],
   imports: [
     BrowserModule,

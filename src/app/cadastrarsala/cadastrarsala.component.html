@@ -1,0 +1,66 @@
+<app-navbar></app-navbar>
+<link rel="stylesheet" href="cadastrarsala.component.css">
+<div class="container" style="background-color: ed;">
+    <div class="mt-5">
+   <h1>Registrar salas</h1>
+    <hr> 
+
+    <div class="mt-5" >
+        <div class="card-body col-sm-6 mx-auto text-black" style="background-color: rd;">
+            <h3 class="mb-5 text-uppercase text-center">Registro de Salas</h3>
+
+
+
+            <form>
+            <div class="row" >
+              <div class="mb-4" >
+                <div class="form-outline">
+                <label class="form-label" for="form3Example1m">Nome da sala</label>
+                <input type="text" id="form3Example1m" class="form-control form-control-lg" formControlName="nome" />
+                </div>
+              </div>
+              
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example8">Capacidade</label>
+              <input type="number" id="form3Example8" class="form-control form-control-lg" formControlName="capacidade" />
+            </div>
+
+            <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+
+              <h6 class="mb-0 me-4">Tipo: </h6>
+
+              <div class="form-check form-check-inline mb-0 me-4">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                  value="Laboratório" formControlName="tipo" />
+                <label class="form-check-label">Laboratório</label>
+              </div>
+
+              <div class="form-check form-check-inline mb-0 me-4">
+                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                  value="Sala" formControlName="tipo"/>
+                <label class="form-check-label">Sala</label>
+              </div>
+            </div>
+            <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example90">Número de Máquinas</label>
+              <input type="number" id="form3Example90" class="form-control form-control-lg" formControlName="ndm" />
+            </div>
+            <div class="form-outline mb-4">
+                <label class="form-label" for="form3Example90">Descrição da Sala</label>
+                  <input type="number" id="form3Example90" class="form-control form-control-lg" formControlName="desc" />
+                </div>
+            <div class="d-flex d-flex justify-content-between">
+              <button type="button" class="btn btn-danger btn-lg" style="width: 300px;">Cancelar</button>
+              <button type="button" class="btn btn-success btn-lg" style="width: 300px;">Registrar</button>
+            </div>
+          </form>
+          </div>
+          
+
+
+
+    </div>
+
+    </div>
+</div>
