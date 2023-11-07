@@ -10,6 +10,7 @@ import { CadastrarprofComponent } from './cadastrarprof/cadastrarprof.component'
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CadastrarsalaComponent } from './cadastrarsala/cadastrarsala.component';
+import { VTabelaComponent } from './v-tabela/v-tabela.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { CadastrarsalaComponent } from './cadastrarsala/cadastrarsala.component'
     LoginComponent,
     TelainicialComponent,
     CadastrarprofComponent,
-    CadastrarsalaComponent
+    CadastrarsalaComponent,
+    VTabelaComponent
   ],
   imports: [
     BrowserModule,

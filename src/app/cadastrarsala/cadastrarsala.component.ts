@@ -20,11 +20,11 @@ export class CadastrarsalaComponent {
   {
     this.formGroupSala = this.formBuilder.group({
       id: [''],
-      nome: [''],
+      nomedasala: [''],
       capacidade: [''],
       tipo: [''],
       ndm: [''],
-      desc: ['']
+      descricao: ['']
     });
 
   }

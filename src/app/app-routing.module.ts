@@ -4,12 +4,14 @@ import { CadastrarprofComponent } from './cadastrarprof/cadastrarprof.component'
 import { CadastrarsalaComponent } from './cadastrarsala/cadastrarsala.component';
 import { LoginComponent } from './login/login.component';
 import { TelainicialComponent } from './telainicial/telainicial.component';
+import { VTabelaComponent } from './v-tabela/v-tabela.component';
 
 const routes: Routes = [
   {path: 'adm', component: TelainicialComponent },
   {path: 'login', component: LoginComponent },
   {path: 'adm/cadastrarprofessor', component: CadastrarprofComponent },
-  {path: 'adm/cadastrarsala', component: CadastrarsalaComponent }
+  {path: 'adm/cadastrarsala', component: CadastrarsalaComponent },
+  {path: 'tabela', component: VTabelaComponent }
 ];
 
 @NgModule({
