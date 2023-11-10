@@ -11,6 +11,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CadastrarsalaComponent } from './cadastrarsala/cadastrarsala.component';
 import { VTabelaComponent } from './v-tabela/v-tabela.component';
+import { CadastrarcursoComponent } from './cadastrarcurso/cadastrarcurso.component';
+import { CadastrardisciplinaComponent } from './cadastrardisciplina/cadastrardisciplina.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { VTabelaComponent } from './v-tabela/v-tabela.component';
     TelainicialComponent,
     CadastrarprofComponent,
     CadastrarsalaComponent,
-    VTabelaComponent
+    VTabelaComponent,
+    CadastrarcursoComponent,
+    CadastrardisciplinaComponent
   ],
   imports: [
     BrowserModule,
