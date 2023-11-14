@@ -1,4 +1,3 @@
-<app-navbar></app-navbar>
 <link rel="stylesheet" href="v-tabela.component.css">
 <div class="container">
    <div class="w-95 w-md-75 w-lg-60 w-xl-55 mx-auto mb-6 text-center">
@@ -6,6 +5,18 @@
    <div class="row">
       <div class="col-md-12">
          <div class="schedule-table">
+            <select class="form-select mt-3" aria-label="Default select example">
+               <option selected disabled>Selecionar curso </option>
+               <option value="1">Curso 1</option>
+               <option value="2">Curso 2</option>
+             </select>
+
+             <select class="form-select mt-3" aria-label="Default select example">
+               <option selected disabled>Selecionar periodo </option>
+               <option value="1">Manhã</option>
+               <option value="2">Tarde</option>
+               <option value="2">Noite</option>
+             </select>
             <table class="table bg-white">
                <thead>
                   <tr class="text-dark">

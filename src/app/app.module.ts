@@ -13,6 +13,8 @@ import { CadastrarsalaComponent } from './cadastrarsala/cadastrarsala.component'
 import { VTabelaComponent } from './v-tabela/v-tabela.component';
 import { CadastrarcursoComponent } from './cadastrarcurso/cadastrarcurso.component';
 import { CadastrardisciplinaComponent } from './cadastrardisciplina/cadastrardisciplina.component';
+import { AdmloginComponent } from './admlogin/admlogin.component';
+import { TabelaadmComponent } from './tabelaadm/tabelaadm.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { CadastrardisciplinaComponent } from './cadastrardisciplina/cadastrardis
     CadastrarsalaComponent,
     VTabelaComponent,
     CadastrarcursoComponent,
-    CadastrardisciplinaComponent
+    CadastrardisciplinaComponent,
+    AdmloginComponent,
+    TabelaadmComponent
   ],
   imports: [
     BrowserModule,

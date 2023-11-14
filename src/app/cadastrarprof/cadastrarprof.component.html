@@ -1,62 +1,48 @@
 <app-navbar></app-navbar>
 <link rel="stylesheet" href="cadastrarprof.component.css">
 <div class="container" style="background-color: ed;">
-    <div class="mt-5">
-   <h1>Cadastrar professor</h1>
-    <hr> 
-
-    <div class="mt-5" >
-        <div class="card-body col-sm-6 mx-auto text-black" style="background-color: rd;">
+   <div class="mt-5">
+      <h1>Cadastrar professor</h1>
+      <hr>
+      <div class="mt-5" >
+         <div class="card-body col-sm-6 mx-auto text-black" style="background-color: rd;">
             <h3 class="mb-5 text-uppercase text-center">Cadastro de Professor</h3>
-
-
-
             <form [formGroup]="formGroupProf">
-            <div class="row" >
-              <div class="mb-4" >
-                <div class="form-outline">
-                <label class="form-label" for="form3Example1m">Nome</label>
-                <input type="text" id="form3Example1m" class="form-control form-control-lg" formControlName="nome" />
-                </div>
-              </div>
-              
-            </div>
-            <div class="form-outline mb-4">
-                <label class="form-label" for="form3Example8">Endereço de Email</label>
-              <input type="text" id="form3Example8" class="form-control form-control-lg" formControlName="email" />
-            </div>
-
-            <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-
-              <h6 class="mb-0 me-4">Genêro: </h6>
-
-              <div class="form-check form-check-inline mb-0 me-4">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
-                  value="Feminino" formControlName="genero" />
-                <label class="form-check-label" for="femaleGender">Feminino</label>
-              </div>
-
-              <div class="form-check form-check-inline mb-0 me-4">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
-                  value="Masculino" formControlName="genero"/>
-                <label class="form-check-label" for="maleGender">Masculino</label>
-              </div>
-            </div>
-            <div class="form-outline mb-4">
-            <label class="form-label" for="form3Example90">Telefone</label>
-              <input type="text" id="form3Example90" class="form-control form-control-lg" formControlName="telefone" />
-            </div>
-            <div class="d-flex d-flex justify-content-between">
-              <button type="button" class="btn btn-danger btn-lg" style="width: 300px;"  (click)="clean()">Cancelar</button>
-              <button type="button" class="btn btn-success btn-lg" style="width: 300px;" (click)="save()">Cadastrar</button>
-            </div>
-          </form>
-          </div>
-          
-
-
-
-    </div>
-
-    </div>
+               <div class="row" >
+                  <div class="mb-4" >
+                     <div class="form-outline">
+                        <label class="form-label" for="form3Example1m">Nome</label>
+                        <input type="text" id="form3Example1m" class="form-control form-control-lg" formControlName="nome" />
+                     </div>
+                  </div>
+               </div>
+               <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example8">Endereço de Email</label>
+                  <input type="text" id="form3Example8" class="form-control form-control-lg" formControlName="email" />
+               </div>
+               <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
+                  <h6 class="mb-0 me-4">Genêro: </h6>
+                  <div class="form-check form-check-inline mb-0 me-4">
+                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
+                        value="Feminino" formControlName="genero" />
+                     <label class="form-check-label" for="femaleGender">Feminino</label>
+                  </div>
+                  <div class="form-check form-check-inline mb-0 me-4">
+                     <input class="form-check-input" type="radio" name="inlineRadioOptions" id="maleGender"
+                        value="Masculino" formControlName="genero"/>
+                     <label class="form-check-label" for="maleGender">Masculino</label>
+                  </div>
+               </div>
+               <div class="form-outline mb-4">
+                  <label class="form-label" for="form3Example90">Telefone</label>
+                  <input type="text" id="form3Example90" class="form-control form-control-lg" formControlName="telefone" />
+               </div>
+               <div class="d-flex d-flex justify-content-between">
+                  <button type="button" class="btn btn-danger btn-lg" style="width: 300px;"  (click)="clean()">Cancelar</button>
+                  <button type="button" class="btn btn-success btn-lg" style="width: 300px;" (click)="save()">Cadastrar</button>
+               </div>
+            </form>
+         </div>
+      </div>
+   </div>
 </div>
