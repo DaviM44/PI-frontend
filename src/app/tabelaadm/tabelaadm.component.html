@@ -5,20 +5,21 @@
    </div>
    <div class="row">
       <div class="col-md-12">
+         <form [formGroup]="formGroupAgenda">
          <div class="schedule-table">
-            <select class="form-select mb-1 mt-3" aria-label="Default select example">
+            <select class="form-select mb-1 mt-3" aria-label="Default select example" formControlName="curso">
                <option selected disabled>Selecionar curso</option>
                <option value="1">Curso 1</option>
                <option value="2">Curso 2</option>
             </select>
-            <select class="form-select mb-1 mt-3" aria-label="Default select example">
+            <select class="form-select mb-1 mt-3" aria-label="Default select example" formControlName="periodo">
                <option selected disabled>Selecionar periodo</option>
                <option value="1">Manhã</option>
                <option value="2">Tarde</option>
                <option value="2">Noite</option>
             </select>
-            <input type="number" placeholder="Ano" id="form3Example1m" class="form-control mb-1 mt-3" formControlName="nome" />
-            <select class="form-select mb-1 mt-3" aria-label="Default select example">
+            <input type="number" placeholder="Ano" id="form3Example1m" class="form-control mb-1 mt-3" formControlName="ano" />
+            <select class="form-select mb-1 mt-3" aria-label="Default select example" formControlName="semestre">
                <option selected disabled>Selecionar semestre</option>
                <option value="1">Primeiro</option>
                <option value="2">Segundo</option>
@@ -29,7 +30,7 @@
                <tbody>
                   <tr>
                      <td class="day">
-                        <select class="form-select mb-1 mt-3" aria-label="Default select example">
+                        <select class="form-select mb-1 mt-3" aria-label="Default select example" formControlName="dia">
                            <option selected disabled>Dia</option>
                            <option value="1">Segunda-Feira</option>
                            <option value="1">Terça-Feira</option>
@@ -38,7 +39,7 @@
                            <option value="1">Sexta-Feira</option>
                            <option value="1">Sábado</option>
                         </select>
-                        <select class="form-select mb-1 mt-3" aria-label="Default select example">
+                        <select class="form-select mb-1 mt-3" aria-label="Default select example" formControlName="aula">
                            <option selected disabled>Aula</option>
                            <option value="1">Primeira Aula</option>
                            <option value="1">Segunda Aula</option>
@@ -49,22 +50,22 @@
                         </select>
                      </td>
                      <td class="active">
-                        <select class="form-select mb-1" aria-label="Default select example">
+                        <select class="form-select mb-1" aria-label="Default select example" formControlName="professor">
                            <option selected disabled>Selecionar...</option>
                            <option value="1">Wiltão</option>
                            <option value="2">Glock</option>
                         </select>
-                        <select class="form-select mb-1" aria-label="Default select example">
+                        <select class="form-select mb-1" aria-label="Default select example" formControlName="materia">
                            <option selected disabled>Selecionar...</option>
                            <option value="1">Programação</option>
                            <option value="2">Matemádoka</option>
                         </select>
-                        <select class="form-select mb-1" aria-label="Default select example">
+                        <select class="form-select mb-1" aria-label="Default select example" formControlName="sala">
                            <option selected disabled>Selecionar...</option>
                            <option value="1">Sala X12</option>
                            <option value="2">Sala X14</option>
                         </select>
-                        <select class="form-select mb-1" aria-label="Default select example">
+                        <select class="form-select mb-1" aria-label="Default select example" formControlName="sala">
                             <option selected disabled>Selecionar...</option>
                             <option value="1">Lab X16</option>
                             <option value="2">Lab X10</option>
@@ -73,8 +74,9 @@
                   </tr>
                </tbody>
             </table>
-            <button type="submit" class="form-control btn btn-success rounded submit mt-3">SALVAR</button>
+            <button type="submit" class="form-control btn btn-success rounded submit mt-3"(click)="save()">SALVAR</button>
          </div>
+         </form>
       </div>
    </div>
 </div>
