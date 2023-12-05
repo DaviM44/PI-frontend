@@ -1,8 +1,8 @@
 <app-navbar></app-navbar>
-<link rel="stylesheet" href="cadastrarsala.component.css">
+<link rel="stylesheet" href="cadastrarlab.component.css">
 <div class="container" style="background-color: ed;">
     <div class="mt-5">
-   <h1>Registrar salas</h1>
+   <h1>Registrar laboratório</h1>
     <hr> 
 
     <div class="mt-5" >
@@ -11,12 +11,12 @@
 
 
 
-            <form [formGroup]="formGroupSala">
+            <form [formGroup]="formGroupLab">
             <div class="row" >
               <div class="mb-4" >
                 <div class="form-outline">
-                <label class="form-label" for="form3Example1m">Nome da sala</label>
-                <input type="text" id="form3Example1m" class="form-control form-control-lg" formControlName="nomedasala" />
+                <label class="form-label" for="form3Example1m">Nome do laboratório</label>
+                <input type="text" id="form3Example1m" class="form-control form-control-lg" formControlName="nomedolab" />
                 </div>
               </div>
               
@@ -25,7 +25,10 @@
                 <label class="form-label" for="form3Example8">Capacidade</label>
               <input type="number" id="form3Example8" class="form-control form-control-lg" formControlName="capacidade" />
             </div>
-
+            <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example90">Número de Máquinas</label>
+              <input type="number" id="form3Example90" class="form-control form-control-lg" formControlName="ndm" />
+            </div>
             <div class="form-outline mb-4">
                 <label class="form-label" for="form3Example90">Descrição da Sala</label>
                   <input type="text" id="form3Example90" class="form-control form-control-lg" formControlName="descricao" />

@@ -4,8 +4,8 @@ export interface Agenda {
     ano: string;
     semestre: string;
     dia: string;
-    aula: string;
+    horario: string;
     professor: string;
-    materia: string;
+    disciplina: string;
     sala: string;
 }

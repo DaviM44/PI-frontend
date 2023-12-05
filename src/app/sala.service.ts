@@ -16,4 +16,8 @@ export class SalaService {
     return this.http.post<Sala>(this.url, sala)
   }
 
+  getSala(): Observable<any[]> {
+    return this.http.get<any[]>(this.url);
+  }
+
 }

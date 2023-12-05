@@ -16,4 +16,8 @@ export class DisciplinaService {
     return this.http.post<Disciplina>(this.url, disciplina)
   }
 
+  getDisciplina(): Observable<any[]> {
+    return this.http.get<any[]>(this.url);
+  }
+
 }

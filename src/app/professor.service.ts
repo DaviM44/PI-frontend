@@ -16,4 +16,8 @@ export class ProfessorService {
     return this.http.post<Professor>(this.url, professor)
   }
 
+  getProfessores(): Observable<any[]> {
+    return this.http.get<any[]>(this.url);
+  }
+
 }

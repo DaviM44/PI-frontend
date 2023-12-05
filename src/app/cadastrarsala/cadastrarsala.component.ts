@@ -22,8 +22,6 @@ export class CadastrarsalaComponent {
       id: [''],
       nomedasala: [''],
       capacidade: [''],
-      tipo: [''],
-      ndm: [''],
       descricao: ['']
     });
 
@@ -41,17 +39,11 @@ export class CadastrarsalaComponent {
          this.formGroupSala.reset();}})
          }
          
-         get nome(): any {
-          return this.formGroupSala.get('nome');
+         get nomedasala(): any {
+          return this.formGroupSala.get('nomedasala');
         }
         get capacidade(): any {
           return this.formGroupSala.get('capacidade');
-        }
-        get tipo(): any {
-          return this.formGroupSala.get('tipo');
-        }
-        get ndm(): any {
-          return this.formGroupSala.get('ndm');
         }
         get desc(): any {
           return this.formGroupSala.get('desc');
