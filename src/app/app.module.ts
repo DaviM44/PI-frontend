@@ -16,6 +16,7 @@ import { CadastrardisciplinaComponent } from './cadastrardisciplina/cadastrardis
 import { AdmloginComponent } from './admlogin/admlogin.component';
 import { TabelaadmComponent } from './tabelaadm/tabelaadm.component';
 import { CadastrarlabComponent } from './cadastrarlab/cadastrarlab.component';
+import { TabelatesteComponent } from './tabelateste/tabelateste.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CadastrarlabComponent } from './cadastrarlab/cadastrarlab.component';
     CadastrardisciplinaComponent,
     AdmloginComponent,
     TabelaadmComponent,
-    CadastrarlabComponent
+    CadastrarlabComponent,
+    TabelatesteComponent
   ],
   imports: [
     BrowserModule,

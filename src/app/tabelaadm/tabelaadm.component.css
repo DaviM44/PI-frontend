@@ -178,4 +178,22 @@ font-size: 15px;
 .schedule-table table tbody td.day {
 min-width: 135px;
 }
+
+
+#botao {
+    text-decoration:none;
+}
+
+#marca {
+    border-bottom: 4px solid #880015;
+}
+
+#linha {
+    border: 2px solid #cccccc
+}
+
+body {
+    background-color: rgb(24, 119, 151);
+  }
+
 }

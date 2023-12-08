@@ -10,6 +10,7 @@ import { CadastrardisciplinaComponent } from './cadastrardisciplina/cadastrardis
 import { AdmloginComponent } from './admlogin/admlogin.component';
 import { TabelaadmComponent } from './tabelaadm/tabelaadm.component';
 import { CadastrarlabComponent } from './cadastrarlab/cadastrarlab.component';
+import { TabelatesteComponent } from './tabelateste/tabelateste.component';
 
 const routes: Routes = [
   {path: 'adm', component: TelainicialComponent },
@@ -21,7 +22,8 @@ const routes: Routes = [
   {path: 'adm/tabela', component: TabelaadmComponent },
   {path: 'adm/cadastrardisciplina', component: CadastrardisciplinaComponent },
   {path: 'login', component: AdmloginComponent },
-  {path: 'tabela', component: VTabelaComponent }
+  {path: 'tabela', component: VTabelaComponent },
+  {path: 'tabelateste', component: TabelatesteComponent }
 ];
 
 @NgModule({

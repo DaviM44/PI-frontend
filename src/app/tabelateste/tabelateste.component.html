@@ -1,0 +1,103 @@
+<app-navbar></app-navbar>
+<link rel="stylesheet" href="tabelateste.component.css">
+<div class="container" style="background-color: ed;">
+    <div class="mt-5">
+        <h1>Alocar horários</h1>
+        <hr> 
+        <div class="mt-5">
+            <div class="card-body col-sm-12 mx-auto text-black">
+
+
+                <form [formGroup]="formGroupAgenda">
+                    <div>
+                        <label class="form-label">Curso</label>
+                        <select class="form-select mb-1" id="linha" formControlName="curso">
+                            <option selected disabled>Selecionar...</option>
+                            <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nome }}</option>
+                        </select>
+                        <label class="form-label" for="form3Example1m">Periodo</label>
+                        <select class="form-select mb-1" id="linha" ormControlName="periodo">
+                            <option selected disabled>Selecionar periodo</option>
+                            <option value="1">Manhã</option>
+                            <option value="2">Tarde</option>
+                            <option value="3">Noite</option>
+                        </select>
+                        <label class="form-label" for="form3Example1m">Ano</label>
+                        <input type="number" placeholder="Ano" id="linha" class="form-control mb-1"
+                            formControlName="ano" />
+                        <label class="form-label" for="form3Example1m">Semestre</label>
+                        <select class="form-select mb-1" id="linha" formControlName="semestre">
+                            <option selected disabled>Selecionar semestre</option>
+                            <option value="Primeiro">Primeiro</option>
+                            <option value="Segundo">Segundo</option>
+                        </select>
+                    </div>
+                    <div class="container-fluid mt-3">
+                        <div class="row">
+                            <div class="col-md-6 d-flex align-items-center justify-content-center flex-column"
+                                style="background-color: rgb(168, 168, 168); height: 250px;">
+                                <div class="col-md-10">
+                                    <select class="form-select mb-1 mt-3" aria-label="Default select example"
+                                        formControlName="dia">
+                                        <option value="" disabled selected>Selecione o dia</option>
+                                        <option value="Segunda">Segunda-Feira</option>
+                                        <option value="Terça">Terça-Feira</option>
+                                        <option value="Quarta">Quarta-Feira</option>
+                                        <option value="Quinta">Quinta-Feira</option>
+                                        <option value="Sexta">Sexta-Feira</option>
+                                        <option value="Sábado">Sábado</option>
+                                    </select>
+                                    <select class="form-select mb-1 mt-3" aria-label="Default select example"
+                                        formControlName="horario">
+                                        <option value="" disabled selected>Selecione a aula</option>
+                                        <option value="1">Primeira Aula</option>
+                                        <option value="2">Segunda Aula</option>
+                                        <option value="3">Terça Aula</option>
+                                        <option value="4">Quarta Aula</option>
+                                        <option value="5">Quinta Aula</option>
+                                        <option value="6">Sexta Aula</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 d-flex align-items-center justify-content-center flex-column"
+                                style="background-color: rgb(128, 128, 128); height: 250px;">
+                                <div class="col-md-10">
+                                    <select class="form-select mb-1" aria-label="Default select example"
+                                        formControlName="professor">
+                                        <option value="" disabled selected>Selecione o professor</option>
+                                        <option *ngFor="let professor of professores" [value]="professor.id">{{
+                                            professor.nome
+                                            }}</option>
+                                    </select>
+                                    <select class="form-select mb-1" aria-label="Default select example"
+                                        formControlName="disciplina">
+                                        <option value="" disabled selected>Selecione a disciplina</option>
+                                        <option *ngFor="let disciplina of disciplinas" [value]="disciplina.id">{{
+                                            disciplina.nome }}</option>
+                                    </select>
+                                    <select class="form-select mb-1" aria-label="Default select example"
+                                        formControlName="sala">
+                                        <option value="" disabled selected>Selecione a sala</option>
+                                        <option *ngFor="let sala of salas" [value]="sala.id">{{ sala.nomedasala }}
+                                        </option>
+                                    </select>
+                                    <select class="form-select mb-1" aria-label="Default select example"
+                                        formControlName="lab">
+                                        <option value="" disabled selected>Selecione o laboratório</option>
+                                        <option *ngFor="let lab of labs" [value]="lab.id">{{ lab.nomedolab }}</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="form-control btn btn-success rounded submit mt-3"
+                     (click)="save()">SALVAR</button>
+                </form>
+
+
+
+
+            </div>
+
+        </div>
+    </div>

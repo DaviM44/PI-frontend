@@ -6,22 +6,21 @@
       <hr>
       <div class="mt-5" >
          <div class="card-body col-sm-6 mx-auto text-black" style="background-color: rd;">
-            <h3 class="mb-5 text-uppercase text-center">Cadastro de Professor</h3>
             <form [formGroup]="formGroupProf">
                <div class="row" >
                   <div class="mb-4" >
                      <div class="form-outline">
                         <label class="form-label" for="form3Example1m">Nome</label>
-                        <input type="text" id="form3Example1m" class="form-control form-control-lg" formControlName="nome" />
+                        <input type="text" id="form3Example1m" class="form-control form-control-lg" id="linha" placeholder="Nome do professor..." formControlName="nome" />
                      </div>
                   </div>
                </div>
                <div class="form-outline mb-4">
                   <label class="form-label" for="form3Example8">Endereço de Email</label>
-                  <input type="text" id="form3Example8" class="form-control form-control-lg" formControlName="email" />
+                  <input type="email" id="form3Example8" class="form-control form-control-lg" placeholder="exemplo@email.com" id="linha" formControlName="email" />
                </div>
                <div class="d-md-flex justify-content-start align-items-center mb-4 py-2">
-                  <h6 class="mb-0 me-4">Genêro: </h6>
+                  <h6 class="mb-0 me-4">Gênero: </h6>
                   <div class="form-check form-check-inline mb-0 me-4">
                      <input class="form-check-input" type="radio" name="inlineRadioOptions" id="femaleGender"
                         value="Feminino" formControlName="genero" />
@@ -34,8 +33,8 @@
                   </div>
                </div>
                <div class="form-outline mb-4">
-                  <label class="form-label" for="form3Example90">Telefone</label>
-                  <input type="text" id="form3Example90" class="form-control form-control-lg" formControlName="telefone" />
+                  <label class="form-label" for="form3Example90" >Telefone</label>
+                  <input type="text" id="form3Example90" class="form-control form-control-lg" placeholder="11223344556" id="linha" formControlName="telefone" />
                </div>
                <div class="d-flex d-flex justify-content-between">
                   <button type="button" class="btn btn-danger btn-lg" style="width: 300px;"  (click)="clean()">Cancelar</button>
