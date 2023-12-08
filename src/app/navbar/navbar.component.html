@@ -13,9 +13,11 @@
             <div ngbDropdown class="d-inline-block">
               <label class="nav-link" href="#" ngbDropdownToggle>Cadastrar</label>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button routerLink="adm/cadastrarprofessor" ngbDropdownItem>Professor</button>
-                <button routerLink="cadastrarcurso" ngbDropdownItem>Curso</button>
-                <button ngbDropdownItem routerLink="cadastrarsala" >Sala</button>
+                <button [routerLink]="['/adm/cadastrarcurso']" ngbDropdownItem>Cursos</button>
+                <button [routerLink]="['/adm/cadastrarprofessor']" ngbDropdownItem>Professores</button>
+                <button [routerLink]="['/adm/cadastrardisciplina']" ngbDropdownItem>Disciplinas</button>
+                <button [routerLink]="['/adm/cadastrarsala']" ngbDropdownItem>Sala</button>
+                <button [routerLink]="['/adm/cadastrarlab']" ngbDropdownItem>Laboratórios</button>                
               </div>
             </div>
           </div>
@@ -23,8 +25,8 @@
             <div ngbDropdown class="d-inline-block">
               <label class="nav-link" href="#" ngbDropdownToggle>Agenda</label>
               <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                <button ngbDropdownItem>Visualizar horários</button>
-                <button ngbDropdownItem>Alocar horários</button>
+                <button [routerLink]="['/adm/tabela']" ngbDropdownItem>Alocar Horários</button>
+                <button [routerLink]="['/tabela']" ngbDropdownItem>Ver Horários</button>
               </div>
             </div>
           </div>

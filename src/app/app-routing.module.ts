@@ -11,6 +11,7 @@ import { AdmloginComponent } from './admlogin/admlogin.component';
 import { TabelaadmComponent } from './tabelaadm/tabelaadm.component';
 import { CadastrarlabComponent } from './cadastrarlab/cadastrarlab.component';
 import { TabelatesteComponent } from './tabelateste/tabelateste.component';
+import { TestadorComponent } from './testador/testador.component';
 
 const routes: Routes = [
   {path: 'adm', component: TelainicialComponent },
@@ -23,7 +24,9 @@ const routes: Routes = [
   {path: 'adm/cadastrardisciplina', component: CadastrardisciplinaComponent },
   {path: 'login', component: AdmloginComponent },
   {path: 'tabela', component: VTabelaComponent },
+  {path: 'teste', component: TestadorComponent },
   {path: 'tabelateste', component: TabelatesteComponent }
+
 ];
 
 @NgModule({

@@ -17,6 +17,7 @@ import { AdmloginComponent } from './admlogin/admlogin.component';
 import { TabelaadmComponent } from './tabelaadm/tabelaadm.component';
 import { CadastrarlabComponent } from './cadastrarlab/cadastrarlab.component';
 import { TabelatesteComponent } from './tabelateste/tabelateste.component';
+import { TestadorComponent } from './testador/testador.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { TabelatesteComponent } from './tabelateste/tabelateste.component';
     AdmloginComponent,
     TabelaadmComponent,
     CadastrarlabComponent,
-    TabelatesteComponent
+    TabelatesteComponent,
+    TestadorComponent
   ],
   imports: [
     BrowserModule,

@@ -12,8 +12,13 @@ export class AlocService {
 
   constructor(private http: HttpClient) { }
 
-  save(agenda: Agenda) : Observable<Agenda> {
+  save(agenda: Agenda): Observable<Agenda> {
     return this.http.post<Agenda>(this.url, agenda)
   }
 
+  getAgendas(): Observable<Agenda[]> {
+    return this.http.get<Agenda[]>(this.url);
+  }
+
 }
+

@@ -1,0 +1,21 @@
+<!-- testador.component.html -->
+<div class="container mt-4">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col" style="width: 25%;">Professor</th>
+        <th scope="col" style="width: 25%;">Disciplina</th>
+        <th scope="col" style="width: 25%;">Dia</th>
+        <th scope="col" style="width: 25%;">Horário</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let agenda of agendas">
+        <td>{{ agenda.professor }}</td>
+        <td>{{ agenda.disciplina }}</td>
+        <td>{{ agenda.dia }}</td>
+        <td>{{ agenda.horario }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
