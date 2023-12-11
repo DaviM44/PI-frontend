@@ -1,12 +1,10 @@
 <app-navbar></app-navbar>
-<div class="container" style="background-color: ed;">
+<div class="container">
     <div class="mt-5">
-        <!-- agendas-list.component.html -->
-
         <div class="container mt-4">
-            <input type="text" [(ngModel)]="termoPesquisa" placeholder="Pesquisar por curso" class="form-control mb-3">
             <h2>Listagem de Aulas</h2>
-            <table class="table table-striped">
+            <input type="text" [(ngModel)]="termoPesquisa" placeholder="Pesquisar por curso" class="form-control mb-3">
+            <table *ngIf="exibirTabela()" class="table table-striped">
                 <thead>
                     <tr>
                         <th>Curso</th>
@@ -35,6 +33,5 @@
                 </tbody>
             </table>
         </div>
-
     </div>
 </div>
