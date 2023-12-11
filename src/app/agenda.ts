@@ -8,4 +8,5 @@ export interface Agenda {
     professor: string;
     disciplina: string;
     sala: string;
+    lab: string;
 }

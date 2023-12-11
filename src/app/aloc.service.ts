@@ -8,7 +8,7 @@ import { Agenda } from './agenda';
 })
 export class AlocService {
 
-  url = "https://mocki.io/v1/0f501a6b-4397-4c56-a3cf-9e9a13131e22";
+  url = "http://localhost:8080/agenda";
 
   constructor(private http: HttpClient) { }
 

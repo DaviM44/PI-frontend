@@ -3,7 +3,14 @@
     <div class="mt-5">
         <div class="container mt-4">
             <h2>Listagem de Aulas</h2>
-            <input type="text" [(ngModel)]="termoPesquisa" placeholder="Pesquisar por curso" class="form-control mb-3">
+            <input type="text" [(ngModel)]="termoPesquisa" placeholder="Selecionar curso..." class="form-control mb-3">
+            <select [(ngModel)]="termoPeriodo" class="form-control mb-3">
+                <option disabled value="">Selecionar período...</option>
+                <option value="manhã">Manhã</option>
+                <option value="tarde">Tarde</option>
+                <option value="noite">Noite</option>
+            </select>
+            <input type="number" [(ngModel)]="termoAno" placeholder="Pesquisar por ano" class="form-control mb-3">
             <table *ngIf="exibirTabela()" class="table table-striped">
                 <thead>
                     <tr>
@@ -20,15 +27,15 @@
                 </thead>
                 <tbody>
                     <tr *ngFor="let agenda of filtrarAgendas()">
-                        <td>{{ agenda.curso }}</td>
-                        <td>{{ agenda.periodo }}</td>
-                        <td>{{ agenda.ano }}</td>
+                        <td><Strong>{{ agenda.curso }}</Strong></td>
+                        <td><Strong>{{ agenda.periodo }}</Strong></td>
+                        <td><Strong>{{ agenda.ano }}</Strong></td>
                         <td>{{ agenda.semestre }}</td>
                         <td>{{ agenda.dia }}</td>
                         <td>{{ agenda.horario }}</td>
                         <td>{{ agenda.professor }}</td>
                         <td>{{ agenda.disciplina }}</td>
-                        <td>{{ agenda.sala }}</td>
+                        <td><Strong>{{ agenda.sala }}</Strong></td>
                     </tr>
                 </tbody>
             </table>

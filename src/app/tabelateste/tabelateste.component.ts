@@ -7,6 +7,7 @@ import { CursoService } from '../curso.service';
 import { SalaService } from '../sala.service';
 import { DisciplinaService } from '../disciplina.service';
 import { LabService } from '../lab.service';
+import { Sala } from '../sala';
 
 
 @Component({
@@ -19,7 +20,7 @@ export class TabelatesteComponent {
   @Input()
   agenda: Agenda = {} as Agenda;
   professores: any[] = [];
-  salas: any[] = [];
+  salas: Sala[] = [];
   disciplinas: any[] = [];
   cursos: any[] = [];
   labs: any[] = [];
@@ -60,8 +61,12 @@ constructor(private alocService:AlocService, private formBuilder: FormBuilder,
   carregarSalas() {
     this.salaService.getSala().subscribe((data: any) => {
       this.salas = data;
+  
+      // Adicionando um console.log para exibir os dados no console
+      console.log('Salas carregadas:', this.salas);
     });
   }
+  
 
 
   carregarDisciplinas() {
@@ -137,6 +142,9 @@ constructor(private alocService:AlocService, private formBuilder: FormBuilder,
           }    
           get sala(): any {
             return this.formGroupAgenda.get('sala');
+          }   
+          get lab(): any {
+            return this.formGroupAgenda.get('lab');
           }    
 
 

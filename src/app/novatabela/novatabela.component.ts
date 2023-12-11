@@ -10,6 +10,8 @@ import { Agenda } from '../agenda';
 export class NovatabelaComponent implements OnInit {
   agendas: Agenda[] = [];
   termoPesquisa: string = '';
+  termoPeriodo: string = '';
+  termoAno: string = ''; 
 
   constructor(private alocService: AlocService) {}
 
@@ -26,7 +28,11 @@ export class NovatabelaComponent implements OnInit {
   }
 
   filtrarAgendas() {
-    return this.agendas.filter(agenda => agenda.curso.toLowerCase().includes(this.termoPesquisa.toLowerCase()));
+    return this.agendas.filter(agenda => 
+      agenda.curso.toLowerCase().includes(this.termoPesquisa.toLowerCase()) &&
+      (this.termoPeriodo === '' || agenda.periodo.toLowerCase().includes(this.termoPeriodo.toLowerCase())) &&
+      (this.termoAno === '' || agenda.ano.toString().includes(this.termoAno))
+    );
   }
 
   ordenarPorTipoAulaDia(diaA: string, horarioA: string, diaB: string, horarioB: string): number {
