@@ -8,12 +8,16 @@ import { Agenda } from './agenda';
 })
 export class AlocService {
 
-  url = "http://localhost:8080/agenda";
+  url = "https://mocki.io/v1/32369bb2-8561-4661-be17-ba5d1b97f540";
 
   constructor(private http: HttpClient) { }
 
-  save(agenda: Agenda) : Observable<Agenda> {
+  save(agenda: Agenda): Observable<Agenda> {
     return this.http.post<Agenda>(this.url, agenda)
+  }
+
+  getAgendas(): Observable<Agenda[]> {
+    return this.http.get<Agenda[]>(this.url);
   }
 
 }
