@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CursoService } from '../curso.service';
 import { Curso } from '../curso';
 
@@ -20,12 +20,16 @@ export class CadastrarcursoComponent {
   {
     this.formGroupCurso = this.formBuilder.group({
       id: [''],
-      nome: [''],
-      periodo: [''],
+      nome: ['', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Z0-9\s]+$/)]], // Não permite caracteres especiais
       duracao: [''],
   
     });
 
+  }
+
+  noWhitespaceValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    return isWhitespace ? { 'whitespace': true } : null;
   }
 
   clean (){

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LabService } from '../lab.service';
 import { Lab } from '../lab';
 
@@ -20,12 +20,17 @@ export class CadastrarlabComponent {
   {
     this.formGroupLab = this.formBuilder.group({
       id: [''],
-      nomedolab: [''],
-      capacidade: [''],
-      descricao: [''],
-      ndm: ['']
+      nomedolab: ['', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Z0-9\sáéíóúãõâêîôÂÊÎÔÁÉÍÓÚÇçãõüÜàÀèÈìÌòÒùÙäëïöüÄËÏÖÜÂÊÎÔÁÉÍÓÚÇç]+$/)]],
+      capacidade: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      descricao: ['', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Z0-9\sáéíóúãõâêîôÂÊÎÔÁÉÍÓÚÇçãõüÜàÀèÈìÌòÒùÙäëïöüÄËÏÖÜÂÊÎÔÁÉÍÓÚÇç]+$/)]],
+      ndm: ['', [Validators.required, Validators.pattern(/^\d+$/)]]
     });
 
+  }
+
+  noWhitespaceValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    return isWhitespace ? { 'whitespace': true } : null;
   }
 
   clean (){
@@ -46,8 +51,8 @@ export class CadastrarlabComponent {
         get capacidade(): any {
           return this.formGroupLab.get('capacidade');
         }
-        get desc(): any {
-          return this.formGroupLab.get('desc');
+        get descricao(): any {
+          return this.formGroupLab.get('descricao');
         }
         get ndm(): any {
           return this.formGroupLab.get('ndm');

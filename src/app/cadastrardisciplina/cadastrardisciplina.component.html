@@ -1,39 +1,64 @@
 <app-navbar></app-navbar>
 <link rel="stylesheet" href="cadastrardisciplina.component.css">
 <div class="container" style="background-color: ed;">
+  <div class="mt-5">
+    <h1>Registrar disciplina</h1>
+    <hr>
+
     <div class="mt-5">
-   <h1>Registrar disciplina</h1>
-    <hr> 
-
-    <div class="mt-5" >
-        <div class="card-body col-sm-6 mx-auto text-black" style="background-color: rd;">
+      <div class="card-body col-sm-6 mx-auto text-black" style="background-color: rd;">
 
 
-          <form [formGroup]="formGroupDisciplina">
-            <div class="row" >
-              <div class="mb-4" >
-                <div class="form-outline">
+        <form [formGroup]="formGroupDisciplina">
+          <div class="row">
+            <div class="mb-4">
+              <div class="form-outline">
                 <label class="form-label" for="form3Example1m">Nome da disciplina</label>
-                <input type="text" id="form3Example1m" class="form-control form-control-lg" id="linha" formControlName="nome" />
+                <input type="text" id="form3Example1m" class="form-control form-control-lg" id="linha"
+                  formControlName="nome" />
+                <div *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+                  <small class="text-danger" *ngIf="nome.errors?.pattern">
+                    O nome da disciplina não pode conter caracteres especiais.
+                  </small>
+                  <small class="text-danger" *ngIf="nome.errors?.required">
+                    O nome da disciplina é obrigatório.
+                  </small>
+                </div>
+                <div *ngIf="nome.errors?.whitespace && (nome.dirty || nome.touched)">
+                  <small class="text-danger">
+                    O nome da disciplina não pode consistir apenas em espaços em branco.
+                  </small>
                 </div>
               </div>
-              
             </div>
-            <div class="form-outline mb-4">
-                <label class="form-label" for="form3Example8">Carga Horária</label>
-              <input type="number" id="form3Example8" placeholder="Aulas por semana" id="linha" class="form-control form-control-lg" formControlName="cargahoraria" />
-            </div>
-            <div class="d-flex d-flex justify-content-between">
-              <button type="button" class="btn btn-danger btn-lg" style="width: 300px;" (click)="clean()">Cancelar</button>
-              <button type="button" class="btn btn-success btn-lg" style="width: 300px;" (click)="save()">Registrar</button>
-            </div>
-          </form>
+
           </div>
-          
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example8">Carga Horária</label>
+            <input type="number" id="form3Example8" placeholder="Aulas por semana" id="linha"
+              class="form-control form-control-lg" formControlName="cargahoraria" />
+            <div *ngIf="cargahoraria.invalid && (cargahoraria.dirty || cargahoraria.touched)">
+              <small class="text-danger" *ngIf="cargahoraria.errors?.pattern">
+                A carga horária deve conter apenas números.
+              </small>
+              <small class="text-danger" *ngIf="cargahoraria.errors?.required">
+                A carga horária é inválida.
+              </small>
+            </div>
+          </div>
+          <div class="d-flex d-flex justify-content-between">
+            <button type="button" class="btn btn-danger btn-lg" style="width: 300px;"
+              (click)="clean()">Cancelar</button>
+            <button type="button" class="btn btn-success btn-lg" style="width: 300px;"
+              (click)="save()">Registrar</button>
+          </div>
+        </form>
+      </div>
+
 
 
 
     </div>
 
-    </div>
+  </div>
 </div>

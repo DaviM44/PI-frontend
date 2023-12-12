@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DisciplinaService } from '../disciplina.service';
 import { Disciplina } from '../disciplina';
 
@@ -20,11 +20,16 @@ export class CadastrardisciplinaComponent {
   {
     this.formGroupDisciplina = this.formBuilder.group({
       id: [''],
-      nome: [''],
-      cargahoraria: ['']
+      nome: ['', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Z0-9\sáéíóúãõâêîôÂÊÎÔÁÉÍÓÚÇçãõüÜàÀèÈìÌòÒùÙäëïöüÄËÏÖÜÂÊÎÔÁÉÍÓÚÇç]+$/)]],
+      cargahoraria: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
   
     });
 
+  }
+
+  noWhitespaceValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    return isWhitespace ? { 'whitespace': true } : null;
   }
 
   clean (){
@@ -45,8 +50,8 @@ export class CadastrardisciplinaComponent {
         get periodo(): any {
           return this.formGroupDisciplina.get('periodo');
         }
-        get duracao(): any {
-          return this.formGroupDisciplina.get('duracao');
+        get cargahoraria(): any {
+          return this.formGroupDisciplina.get('cargahoraria');
         }     
       
       }

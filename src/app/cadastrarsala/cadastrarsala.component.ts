@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SalaService } from '../sala.service';
 import { Sala } from '../sala';
 
@@ -20,11 +20,16 @@ export class CadastrarsalaComponent {
   {
     this.formGroupSala = this.formBuilder.group({
       id: [''],
-      nomedasala: [''],
-      capacidade: [''],
-      descricao: ['']
+      nomedasala: ['', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Z0-9\sáéíóúãõâêîôÂÊÎÔÁÉÍÓÚÇçãõüÜàÀèÈìÌòÒùÙäëïöüÄËÏÖÜÂÊÎÔÁÉÍÓÚÇç]+$/)]],
+      capacidade: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
+      descricao: ['', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Z0-9\sáéíóúãõâêîôÂÊÎÔÁÉÍÓÚÇçãõüÜàÀèÈìÌòÒùÙäëïöüÄËÏÖÜÂÊÎÔÁÉÍÓÚÇç]+$/)]]
     });
 
+  }
+
+  noWhitespaceValidator(control: AbstractControl): { [key: string]: boolean } | null {
+    const isWhitespace = (control.value || '').trim().length === 0;
+    return isWhitespace ? { 'whitespace': true } : null;
   }
 
   clean (){
@@ -45,8 +50,8 @@ export class CadastrarsalaComponent {
         get capacidade(): any {
           return this.formGroupSala.get('capacidade');
         }
-        get desc(): any {
-          return this.formGroupSala.get('desc');
+        get descricao(): any {
+          return this.formGroupSala.get('descricao');
         }
       
       

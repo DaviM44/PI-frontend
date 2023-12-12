@@ -8,6 +8,8 @@ import { SalaService } from '../sala.service';
 import { DisciplinaService } from '../disciplina.service';
 import { LabService } from '../lab.service';
 import { Sala } from '../sala';
+import { Validators } from '@angular/forms';
+
 
 
 @Component({
@@ -37,7 +39,7 @@ constructor(private alocService:AlocService, private formBuilder: FormBuilder,
     this.formGroupAgenda = this.formBuilder.group({
       curso: [''],
       periodo: [''],
-      ano: [''],
+      ano: ['', [Validators.required, Validators.maxLength(4)]], // Adicione Validators.maxLength
       semestre: [''],
       dia: [''],
       horario: [''],
@@ -92,17 +94,6 @@ constructor(private alocService:AlocService, private formBuilder: FormBuilder,
       this.professores = data;
     });
 
-
-    
-
-
-
-
-
-
-
-
-
   }
 
   clean (){
@@ -145,7 +136,21 @@ constructor(private alocService:AlocService, private formBuilder: FormBuilder,
           }   
           get lab(): any {
             return this.formGroupAgenda.get('lab');
-          }    
+          }  
+          
+          
+          limitarDigitos(event: any) {
+            const input = event.target;
+            const maxLength = 4;
+          
+            // Verifica se a tecla pressionada é uma tecla de exclusão (backspace ou delete)
+            const isBackspaceOrDelete = event.code === 'Backspace' || event.code === 'Delete';
+          
+            // Permite a exclusão e impede a entrada de mais dígitos se o limite for atingido
+            if (input.value.length >= maxLength && !isBackspaceOrDelete) {
+              event.preventDefault();
+            }
+          }
 
 
   }

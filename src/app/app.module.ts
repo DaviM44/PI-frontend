@@ -42,7 +42,7 @@ import { NovatabelaComponent } from './novatabela/novatabela.component';
     NgbModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

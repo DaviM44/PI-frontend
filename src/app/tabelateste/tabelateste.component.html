@@ -4,7 +4,7 @@
     <div class="mt-5">
         <h1>Alocar horários</h1>
         <hr>
-        <div class="mt-5">
+        <div class="mt-2">
             <div class="card-body col-sm-12 mx-auto text-black">
 
 
@@ -24,7 +24,7 @@
                         </select>
                         <label class="form-label" for="form3Example1m">Ano</label>
                         <input type="number" placeholder="Ano" id="linha" class="form-control mb-1"
-                            formControlName="ano" />
+                            formControlName="ano" (keydown)="limitarDigitos($event)"/>
                         <label class="form-label" for="form3Example1m">Semestre</label>
                         <select class="form-select mb-1" id="linha" formControlName="semestre">
                             <option selected disabled value="">Selecionar semestre</option>
@@ -106,7 +106,7 @@
                                 (click)="clean()">LIMPAR</button>
                         </div>
                         <div class="col-md-6">
-                            <a href="tabela" class="form-control btn btn-info rounded mt-3 text-white" role="button">VISUALIZAR TABELA</a>
+                            <button [routerLink]="['/visualizar/']" class="form-control btn btn-info rounded mt-3 text-white" role="button">VISUALIZAR TABELA</button>
                         </div>
                     </div>
                 </form>

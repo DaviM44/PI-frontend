@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfessorService } from '../professor.service';
 import { Professor } from '../professor';
 
@@ -20,9 +20,9 @@ export class CadastrarprofComponent {
   {
     this.formGroupProf = this.formBuilder.group({
       id: [''],
-      nome: [''],
-      email: [''],
-      telefone: [''],
+      nome: ['', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Z\sáéíóúãõâêîôÂÊÎÔÁÉÍÓÚÇçãõüÜàÀèÈìÌòÒùÙäëïöüÄËÏÖÜÂÊÎÔÁÉÍÓÚÇç]+$/)]],
+      email: ['', [Validators.required, Validators.email]],
+      telefone: ['', [Validators.required, Validators.pattern(/^\d+$/)]],
       genero: ['']
     });
 
@@ -30,6 +30,11 @@ export class CadastrarprofComponent {
 
   clean (){
     this.formGroupProf.reset();
+    }
+
+    noWhitespaceValidator(control: AbstractControl): { [key: string]: boolean } | null {
+      const isWhitespace = (control.value || '').trim().length === 0;
+      return isWhitespace ? { 'whitespace': true } : null;
     }
 
 

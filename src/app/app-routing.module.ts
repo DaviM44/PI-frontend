@@ -24,8 +24,8 @@ const routes: Routes = [
   {path: 'adm/cadastrardisciplina', component: CadastrardisciplinaComponent },
   {path: 'login', component: AdmloginComponent },
   {path: 'tabela', component: VTabelaComponent },
-  {path: 'tabelateste', component: TabelatesteComponent },
-  {path: 'tabelateste2', component: NovatabelaComponent }
+  {path: 'adm/alocar', component: TabelatesteComponent },
+  {path: 'visualizar', component: NovatabelaComponent }
 ];
 
 @NgModule({

@@ -13,6 +13,19 @@
                         <label class="form-label" for="form3Example1m">Nome do curso</label>
                         <input type="text" id="form3Example1m" class="form-control form-control-lg" id="linha"
                            formControlName="nome" />
+                           <div *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+                              <small class="text-danger" *ngIf="nome.errors?.pattern">
+                                O nome do curso não pode conter caracteres especiais.
+                              </small>
+                              <small class="text-danger" *ngIf="nome.errors?.required">
+                                O nome do curso é obrigatório.
+                              </small>
+                            </div>
+                            <div *ngIf="nome.errors?.whitespace && (nome.dirty || nome.touched)">
+                              <small class="text-danger">
+                                O nome do curso não pode consistir apenas em espaços em branco.
+                              </small>
+                            </div>
                      </div>
                   </div>
                </div>

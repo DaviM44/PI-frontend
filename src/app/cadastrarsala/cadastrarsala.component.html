@@ -1,46 +1,78 @@
 <app-navbar></app-navbar>
 <link rel="stylesheet" href="cadastrarsala.component.css">
 <div class="container" style="background-color: ed;">
+  <div class="mt-5">
+    <h1>Registrar salas</h1>
+    <hr>
+
     <div class="mt-5">
-   <h1>Registrar salas</h1>
-    <hr> 
-
-    <div class="mt-5" >
-        <div class="card-body col-sm-6 mx-auto text-black" style="background-color: rd;">
-            <h3 class="mb-5 text-uppercase text-center">Registro de Salas</h3>
+      <div class="card-body col-sm-6 mx-auto text-black" style="background-color: rd;">
+        <h3 class="mb-5 text-uppercase text-center">Registro de Salas</h3>
 
 
 
-            <form [formGroup]="formGroupSala">
-            <div class="row" >
-              <div class="mb-4" >
-                <div class="form-outline">
+        <form [formGroup]="formGroupSala">
+          <div class="row">
+            <div class="mb-4">
+              <div class="form-outline">
                 <label class="form-label" for="form3Example1m">Nome da sala</label>
-                <input type="text" id="form3Example1m" class="form-control form-control-lg" id="linha" formControlName="nomedasala" />
+                <input type="text" id="form3Example1m" class="form-control form-control-lg" id="linha"
+                  formControlName="nomedasala" />
+                <div *ngIf="nomedasala.invalid && (nomedasala.dirty || nomedasala.touched)">
+                  <small class="text-danger" *ngIf="nomedasala.errors?.pattern">
+                    O nome da sala não pode conter caracteres especiais.
+                  </small>
+                  <small class="text-danger" *ngIf="nomedasala.errors?.required">
+                    O nome da sala é obrigatório.
+                  </small>
+                </div>
+                <div *ngIf="nomedasala.errors?.whitespace && (nomedasala.dirty || nomedasala.touched)">
+                  <small class="text-danger">
+                    O nome da sala não pode consistir apenas em espaços em branco.
+                  </small>
                 </div>
               </div>
-              
             </div>
-            <div class="form-outline mb-4">
-                <label class="form-label" for="form3Example8">Capacidade</label>
-              <input type="number" id="form3Example8" class="form-control form-control-lg" id="linha" formControlName="capacidade" />
-            </div>
-
-            <div class="form-outline mb-4">
-                <label class="form-label" for="form3Example90">Descrição da Sala</label>
-                  <input type="text" id="form3Example90" class="form-control form-control-lg" id="linha" formControlName="descricao" />
-                </div>
-            <div class="d-flex d-flex justify-content-between">
-              <button type="button" class="btn btn-danger btn-lg" style="width: 300px;" (click)="clean()">Cancelar</button>
-              <button type="button" class="btn btn-success btn-lg" style="width: 300px;" (click)="save()">Registrar</button>
-            </div>
-          </form>
           </div>
-          
-
-
-
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example8">Capacidade</label>
+            <input type="number" id="form3Example8" class="form-control form-control-lg" id="linha"
+              formControlName="capacidade" />
+            <div *ngIf="capacidade.invalid && (capacidade.dirty || capacidade.touched)">
+              <small class="text-danger" *ngIf="capacidade.errors?.pattern">
+                A capacidade deve conter apenas números.
+              </small>
+              <small class="text-danger" *ngIf="capacidade.errors?.required">
+                O número é inválido.
+              </small>
+            </div>
+          </div>
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form3Example90">Descrição da Sala</label>
+            <input type="text" id="form3Example90" class="form-control form-control-lg" id="linha"
+              formControlName="descricao" />
+            <div *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
+              <small class="text-danger" *ngIf="descricao.errors?.pattern">
+                A descrição da sala não pode conter caracteres especiais.
+              </small>
+              <small class="text-danger" *ngIf="descricao.errors?.required">
+                A descrição da sala é obrigatório.
+              </small>
+            </div>
+            <div *ngIf="descricao.errors?.whitespace && (descricao.dirty || descricao.touched)">
+              <small class="text-danger">
+                A descrição da sala não pode consistir apenas em espaços em branco.
+              </small>
+            </div>
+          </div>
+          <div class="d-flex d-flex justify-content-between">
+            <button type="button" class="btn btn-danger btn-lg" style="width: 300px;"
+              (click)="clean()">Cancelar</button>
+            <button type="button" class="btn btn-success btn-lg" style="width: 300px;"
+              (click)="save()">Registrar</button>
+          </div>
+        </form>
+      </div>
     </div>
-
-    </div>
+  </div>
 </div>
