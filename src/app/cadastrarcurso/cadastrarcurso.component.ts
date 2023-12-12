@@ -20,8 +20,8 @@ export class CadastrarcursoComponent {
   {
     this.formGroupCurso = this.formBuilder.group({
       id: [''],
-      nome: ['', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Z0-9\s]+$/)]], // Não permite caracteres especiais
-      duracao: [''],
+      nome: ['', [Validators.required, this.noWhitespaceValidator, Validators.pattern(/^[a-zA-Z0-9\sáéíóúãõâêîôÂÊÎÔÁÉÍÓÚÇçãõüÜàÀèÈìÌòÒùÙäëïöüÄËÏÖÜÂÊÎÔÁÉÍÓÚÇç]+$/)]],      periodo: [''],
+      duracao: ['']
   
     });
 

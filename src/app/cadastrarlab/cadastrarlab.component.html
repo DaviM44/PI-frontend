@@ -11,7 +11,7 @@
           <div class="row">
             <div class="mb-4">
               <div class="form-outline">
-                <label class="form-label" for="form3Example1m">Nome do laboratório</label>
+                <label class="form-label" for="form3Example1m">Nome do Laboratório</label>
                 <input type="text" id="form3Example1m" class="form-control form-control-lg" id="linha"
                   formControlName="nomedolab" />
                 <div *ngIf="nomedolab.invalid && (nomedolab.dirty || nomedolab.touched)">
@@ -57,20 +57,20 @@
             </div>
           </div>
           <div class="form-outline mb-4">
-            <label class="form-label" for="form3Example90">Descrição da Sala</label>
+            <label class="form-label" for="form3Example90">Descrição do Laboratório</label>
             <input type="text" id="form3Example90" class="form-control form-control-lg" id="linha"
               formControlName="descricao" />
               <div *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
                 <small class="text-danger" *ngIf="descricao.errors?.pattern">
-                  A descrição da sala não pode conter caracteres especiais.
+                  A descrição do laboratório não pode conter caracteres especiais.
                 </small>
                 <small class="text-danger" *ngIf="descricao.errors?.required">
-                  A descrição da sala é obrigatório.
+                  A descrição do laboratório é obrigatório.
                 </small>
               </div>
               <div *ngIf="descricao.errors?.whitespace && (descricao.dirty || descricao.touched)">
                 <small class="text-danger">
-                  A descrição da sala não pode consistir apenas em espaços em branco.
+                  A descrição do laboratório não pode consistir apenas em espaços em branco.
                 </small>
               </div>
           </div>

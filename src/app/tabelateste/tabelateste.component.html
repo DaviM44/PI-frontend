@@ -4,6 +4,9 @@
     <div class="mt-5">
         <h1>Alocar horários</h1>
         <hr>
+        <div *ngIf="saveSuccess" class="alert alert-success mt-3" role="alert">
+            Dados salvos com sucesso!
+          </div>
         <div class="mt-2">
             <div class="card-body col-sm-12 mx-auto text-black">
 
@@ -13,18 +16,23 @@
                         <label class="form-label">Curso</label>
                         <select class="form-select mb-1" id="linha" formControlName="curso">
                             <option selected disabled value="">Selecionar...</option>
-                            <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nome }}</option>
+                            <option *ngFor="let curso of cursos" [value]="curso.nome">{{ curso.nome }}</option>
                         </select>
+                        
                         <label class="form-label" for="form3Example1m" placeholder="teste">Periodo</label>
                         <select class="form-select mb-1" id="linha" formControlName="periodo">
                             <option selected disabled value="">Selecionar...</option>
-                            <option value="Manhã">Manhã</option>
-                            <option value="Tarde">Tarde</option>
-                            <option value="Noite">Noite</option>
+                            <option value="manhã">Manhã</option>
+                            <option value="tarde">Tarde</option>
+                            <option value="noite">Noite</option>
                         </select>
                         <label class="form-label" for="form3Example1m">Ano</label>
                         <input type="number" placeholder="Ano" id="linha" class="form-control mb-1"
-                            formControlName="ano" (keydown)="limitarDigitos($event)"/>
+                            formControlName="ano" (keydown)="limitarDigitos($event)" />
+                        <div class="text-danger" *ngIf="ano.invalid && (ano.dirty || ano.touched)">
+                            <div *ngIf="ano.errors.required">Campo obrigatório.</div>
+                            <div *ngIf="ano.errors.maxLength">O ano deve ter no máximo 4 dígitos.</div>
+                        </div>
                         <label class="form-label" for="form3Example1m">Semestre</label>
                         <select class="form-select mb-1" id="linha" formControlName="semestre">
                             <option selected disabled value="">Selecionar semestre</option>
@@ -58,12 +66,12 @@
                                     <select class="form-select mb-1 mt-3" aria-label="Default select example"
                                         formControlName="horario">
                                         <option value="" disabled selected>Selecione a aula</option>
-                                        <option value="1">Primeira Aula</option>
-                                        <option value="2">Segunda Aula</option>
-                                        <option value="3">Terceira Aula</option>
-                                        <option value="4">Quarta Aula</option>
-                                        <option value="5">Quinta Aula</option>
-                                        <option value="6">Sexta Aula</option>
+                                        <option value="primeira aula">Primeira Aula</option>
+                                        <option value="segunda aula">Segunda Aula</option>
+                                        <option value="terceira aula">Terceira Aula</option>
+                                        <option value="quarta aula">Quarta Aula</option>
+                                        <option value="quinta aula">Quinta Aula</option>
+                                        <option value="sexta aula">Sexta Aula</option>
                                     </select>
                                 </div>
                             </div>
@@ -73,26 +81,28 @@
                                     <select class="form-select mb-1" aria-label="Default select example"
                                         formControlName="professor">
                                         <option value="" disabled selected>Selecione o professor</option>
-                                        <option *ngFor="let professor of professores" [value]="professor.id">{{
+                                        <option *ngFor="let professor of professores" [value]="professor.nome">{{
                                             professor.nome
                                             }}</option>
                                     </select>
                                     <select class="form-select mb-1" aria-label="Default select example"
                                         formControlName="disciplina">
                                         <option value="" disabled selected>Selecione a disciplina</option>
-                                        <option *ngFor="let disciplina of disciplinas" [value]="disciplina.id">{{
+                                        <option *ngFor="let disciplina of disciplinas" [value]="disciplina.nome">{{
                                             disciplina.nome }}</option>
                                     </select>
                                     <select class="form-select mb-1" aria-label="Default select example"
                                         formControlName="sala">
                                         <option value="" disabled selected>Selecione a sala</option>
-                                        <option *ngFor="let sala of salas" [value]="sala.id">{{ sala.nomedasala }}
+                                        <option *ngFor="let sala of salas" [value]="sala.nomedasala">{{ sala.nomedasala
+                                            }}
                                         </option>
                                     </select>
                                     <select class="form-select mb-1" aria-label="Default select example"
                                         formControlName="lab">
                                         <option value="" disabled selected>Selecione o laboratório</option>
-                                        <option *ngFor="let lab of labs" [value]="lab.id">{{ lab.nomedolab }}</option>
+                                        <option *ngFor="let lab of labs" [value]="lab.nomedolab">{{ lab.nomedolab }}
+                                        </option>
                                     </select>
                                 </div>
                             </div>
@@ -106,7 +116,9 @@
                                 (click)="clean()">LIMPAR</button>
                         </div>
                         <div class="col-md-6">
-                            <button [routerLink]="['/visualizar/']" class="form-control btn btn-info rounded mt-3 text-white" role="button">VISUALIZAR TABELA</button>
+                            <button [routerLink]="['/adm/tabela/']"
+                                class="form-control btn btn-info rounded mt-3 text-white" role="button">VISUALIZAR
+                                TABELA</button>
                         </div>
                     </div>
                 </form>

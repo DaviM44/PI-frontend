@@ -1,93 +1,46 @@
 <app-navbar></app-navbar>
-<link rel="stylesheet" href="tabelaadm.component.css">
 <div class="container">
-   <div class="w-95 w-md-75 w-lg-60 w-xl-55 mx-auto mb-6 text-center">
-   </div>
-   <div class="row">
-      <div class="col-md-12">
-         <div class="mt-5">
-            <form [formGroup]="formGroupAgenda">
-               <div class="schedule-table">
-                  <label class="form-label">Nome do curso</label>
-                  <select class="form-select mb-1" aria-label="Default select example"  formControlName="curso" >
-                     <option selected disabled>Selecionar...</option>
-                     <option *ngFor="let curso of cursos" [value]="curso.id">{{ curso.nome }}</option>
-                  </select>
-                  <label class="form-label" for="form3Example1m">Periodo</label>
-                  <select class="form-select mb-1" aria-label="Default select example" formControlName="periodo">
-                     <option selected disabled>Selecionar periodo</option>
-                     <option value="1">Manhã</option>
-                     <option value="2">Tarde</option>
-                     <option value="3">Noite</option>
-                  </select>
-                  <label class="form-label" for="form3Example1m">Ano</label>
-                  <input type="number" placeholder="Ano" id="form3Example1m" class="form-control mb-1"
-                     formControlName="ano" />
-                  <label class="form-label" for="form3Example1m">Semestre</label>
-                  <select class="form-select mb-1" aria-label="Default select example" formControlName="semestre">
-                     <option selected disabled>Selecionar semestre</option>
-                     <option value="Primeiro">Primeiro</option>
-                     <option value="Segundo">Segundo</option>
-                  </select>
-                  <table class="table mt-3">
-                     <thead>
-                     </thead>
-                     <tbody>
-                        <tr>
-                           <td class="day"  style="background-color: red;">
-                              <select class="form-select mb-1 mt-3" aria-label="Default select example"
-                                 formControlName="dia">
-                                 <option value="" disabled selected>Selecione o dia</option>
-                                 <option value="Segunda">Segunda-Feira</option>
-                                 <option value="Terça">Terça-Feira</option>
-                                 <option value="Quarta">Quarta-Feira</option>
-                                 <option value="Quinta">Quinta-Feira</option>
-                                 <option value="Sexta">Sexta-Feira</option>
-                                 <option value="Sábado">Sábado</option>
-                              </select>
-                              <select class="form-select mb-1 mt-3" aria-label="Default select example"
-                                 formControlName="horario">
-                                 <option value="" disabled selected>Selecione a aula</option>
-                                 <option value="1">Primeira Aula</option>
-                                 <option value="2">Segunda Aula</option>
-                                 <option value="3">Terça Aula</option>
-                                 <option value="4">Quarta Aula</option>
-                                 <option value="5">Quinta Aula</option>
-                                 <option value="6">Sexta Aula</option>
-                              </select>
-                           </td>
-                           <td class="active">
-                              <select class="form-select mb-1" aria-label="Default select example"
-                                 formControlName="professor">
-                                 <option value="" disabled selected>Selecione o professor</option>
-                                 <option *ngFor="let professor of professores" [value]="professor.id">{{ professor.nome
-                                    }}</option>
-                              </select>
-                              <select class="form-select mb-1" aria-label="Default select example"
-                                 formControlName="disciplina">
-                                 <option value="" disabled selected>Selecione a disciplina</option>
-                                 <option *ngFor="let disciplina of disciplinas" [value]="disciplina.id">{{
-                                    disciplina.nome }}</option>
-                              </select>
-                              <select class="form-select mb-1" aria-label="Default select example"
-                                 formControlName="sala">
-                                 <option value="" disabled selected>Selecione a sala</option>
-                                 <option *ngFor="let sala of salas" [value]="sala.id">{{ sala.nomedasala }}</option>
-                              </select>
-                              <select class="form-select mb-1" aria-label="Default select example"
-                                 formControlName="lab">
-                                 <option value="" disabled selected>Selecione o lab</option>
-                                 <option *ngFor="let lab of labs" [value]="lab.id">{{ lab.nomedolab }}</option>
-                              </select>
-                           </td>
-                        </tr>
-                     </tbody>
-                  </table>
-                  <button type="submit" class="form-control btn btn-success rounded submit mt-3"
-                     (click)="save()">SALVAR</button>
-               </div>
-            </form>
-         </div>
-      </div>
-   </div>
+    <div class="mt-5">
+        <div class="container mt-4">
+            <h2>Listagem de Aulas</h2>
+            <input type="text" [(ngModel)]="termoPesquisa" placeholder="Selecionar curso..." class="form-control mb-3">
+            <select [(ngModel)]="termoPeriodo" class="form-control mb-3">
+                <option disabled value="">Selecionar período...</option>
+                <option value="manhã">Manhã</option>
+                <option value="tarde">Tarde</option>
+                <option value="noite">Noite</option>
+            </select>
+            <input type="number" [(ngModel)]="termoAno" placeholder="Pesquisar por ano" class="form-control mb-3">
+            <table *ngIf="exibirTabela()" class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Curso</th>
+                        <th>Período</th>
+                        <th>Ano</th>
+                        <th>Semestre</th>
+                        <th>Dia</th>
+                        <th>Horário</th>
+                        <th>Professor</th>
+                        <th>Disciplina</th>
+                        <th>Sala</th>
+                        <th>Laboratório</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let agenda of filtrarAgendas()">
+                        <td><Strong>{{ agenda.curso }}</Strong></td>
+                        <td><Strong>{{ agenda.periodo |titlecase  }}</Strong></td>
+                        <td><Strong>{{ agenda.ano }}</Strong></td>
+                        <td>{{ agenda.semestre  |titlecase  }}</td>
+                        <td><Strong>{{ agenda.dia |titlecase }}</Strong></td>
+                        <td>{{ agenda.horario |titlecase  }}</td>
+                        <td>{{ agenda.professor }}</td>
+                        <td>{{ agenda.disciplina }}</td>
+                        <td><Strong>{{ agenda.sala }}</Strong></td>
+                        <td><Strong>{{ agenda.lab }}</Strong></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

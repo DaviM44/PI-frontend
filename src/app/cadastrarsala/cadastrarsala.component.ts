@@ -13,6 +13,7 @@ export class CadastrarsalaComponent {
   formGroupSala: FormGroup;
   @Input()
   sala: Sala = {} as Sala;
+  
 
 
 

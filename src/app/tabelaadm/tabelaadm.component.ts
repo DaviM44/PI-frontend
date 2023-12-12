@@ -1,143 +1,86 @@
-import { Component, Input } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
-import { Agenda } from '../agenda';
+import { Component, OnInit } from '@angular/core';
 import { AlocService } from '../aloc.service';
-import { ProfessorService } from '../professor.service';
-import { CursoService } from '../curso.service';
-import { SalaService } from '../sala.service';
-import { DisciplinaService } from '../disciplina.service';
-import { LabService } from '../lab.service';
-
+import { Agenda } from '../agenda';
 
 @Component({
   selector: 'app-tabelaadm',
   templateUrl: './tabelaadm.component.html',
   styleUrls: ['./tabelaadm.component.css']
 })
-export class TabelaadmComponent {
-  formGroupAgenda: FormGroup;
-  @Input()
-  agenda: Agenda = {} as Agenda;
-  professores: any[] = [];
-  salas: any[] = [];
-  disciplinas: any[] = [];
-  cursos: any[] = [];
-  labs: any[] = [];
+export class TabelaadmComponent implements OnInit {
+  agendas: Agenda[] = [];
+  termoPesquisa: string = '';
+  termoPeriodo: string = '';
+  termoAno: string = ''; 
 
-
-constructor(private alocService:AlocService, private formBuilder: FormBuilder, 
-  private professorService: ProfessorService,
-  private cursoService: CursoService,
-  private disciplinaService: DisciplinaService,
-  private salaService: SalaService,
-  private labService: LabService,
- ) 
-  {
-    this.formGroupAgenda = this.formBuilder.group({
-      curso: [''],
-      periodo: [''],
-      ano: [''],
-      semestre: [''],
-      dia: [''],
-      horario: [''],
-      professor: [''],
-      disciplina: [''],
-      sala: [''],
-      lab:['']
-  
-    });
-
-  }
+  constructor(private alocService: AlocService) {}
 
   ngOnInit() {
-    // Carregue a lista de professores ao iniciar o componente
-    this.carregarProfessores();
-    this.carregarCursos();
-    this.carregarDisciplinas();
-    this.carregarSalas();
-    this.carregarLabs();
+    this.carregarAgendas();
   }
-  carregarSalas() {
-    this.salaService.getSala().subscribe((data: any) => {
-      this.salas = data;
+
+  carregarAgendas() {
+    this.alocService.getAgendas().subscribe((data: Agenda[]) => {
+      this.agendas = data;
+      // Ordenar a lista com base no tipo de aula (primeira, segunda, terceira, ...) e no dia da semana
+      this.agendas.sort((a, b) => this.ordenarPorTipoAulaDia(a.dia, a.horario, b.dia, b.horario));
     });
   }
 
-
-  carregarDisciplinas() {
-    this.disciplinaService.getDisciplina().subscribe((data: any) => {
-      this.disciplinas = data;
-    });
+  filtrarAgendas() {
+    return this.agendas.filter(agenda => 
+      agenda.curso.toLowerCase().includes(this.termoPesquisa.toLowerCase()) &&
+      (this.termoPeriodo === '' || agenda.periodo.toLowerCase().includes(this.termoPeriodo.toLowerCase())) &&
+      (this.termoAno === '' || agenda.ano.toString().includes(this.termoAno))
+    );
   }
 
-  carregarCursos() {
-    this.cursoService.getCurso().subscribe((data: any) => {
-      this.cursos = data;
-    });
-  }
+  ordenarPorTipoAulaDia(diaA: string, horarioA: string, diaB: string, horarioB: string): number {
+    // Ordem desejada dos dias da semana
+    const ordemDias = ['segunda', 'terça', 'quarta', 'quinta', 'sexta', 'sábado', 'domingo'];
 
-  carregarLabs() {
-    this.labService.getLab().subscribe((data: any) => {
-      this.labs = data;
-    });
-  }
+    // Obtenha o índice do dia da semana para a ordenação
+    const indiceDiaA = ordemDias.indexOf(diaA.toLowerCase());
+    const indiceDiaB = ordemDias.indexOf(diaB.toLowerCase());
 
-  carregarProfessores() {
-    this.professorService.getProfessores().subscribe((data: any) => {
-      this.professores = data;
-    });
-
-
-    
-
-
-
-
-
-
-
-
-
-  }
-
-  clean (){
-    this.formGroupAgenda.reset();
+    // Se os dias forem diferentes, ordene pelos dias
+    if (indiceDiaA !== indiceDiaB) {
+      return indiceDiaA - indiceDiaB;
     }
 
-    save() {
-    
-      this.alocService.save(this.formGroupAgenda.value).subscribe({
-         next: () => {
-           this.formGroupAgenda.reset();}})
-           }
-           
-           get curso(): any {
-            return this.formGroupAgenda.get('curso');
-          }
-          get periodo(): any {
-            return this.formGroupAgenda.get('periodo');
-          }
-          get ano(): any {
-            return this.formGroupAgenda.get('ano');
-          } 
-          get semestre(): any {
-            return this.formGroupAgenda.get('semestre');
-          }
-          get dia(): any {
-            return this.formGroupAgenda.get('dia');
-          }
-          get horario(): any {
-            return this.formGroupAgenda.get('horario');
-          }
-          get professor(): any {
-            return this.formGroupAgenda.get('professor');
-          }
-          get disciplina(): any {
-            return this.formGroupAgenda.get('disciplina');
-          }    
-          get sala(): any {
-            return this.formGroupAgenda.get('sala');
-          }    
+    // Caso os dias sejam iguais, ordene pelas aulas
+    const tipoAulaA = this.obterTipoAula(horarioA);
+    const tipoAulaB = this.obterTipoAula(horarioB);
 
+    // Ordem desejada das aulas
+    const ordemAulas = [
+      'primeira aula',
+      'segunda aula',
+      'terceira aula',
+      'quarta aula',
+      'quinta aula',
+      'sexta aula'
+      // Adicione mais aulas, se necessário
+    ];
 
+    // Obtenha o índice da aula para a ordenação
+    const indiceAulaA = ordemAulas.indexOf(tipoAulaA);
+    const indiceAulaB = ordemAulas.indexOf(tipoAulaB);
+
+    // Ordene com base nos dias e, em seguida, nas aulas
+    if (indiceAulaA !== indiceAulaB) {
+      return indiceAulaA - indiceAulaB;
+    } else {
+      return 0;
+    }
   }
+
+  obterTipoAula(horario: string): string {
+    // Extrai o tipo de aula do horário
+    return horario.toLowerCase().replace('ª aula', '').trim();
+  }
+
+  exibirTabela(): boolean {
+    return this.termoPesquisa.trim() !== '' && this.filtrarAgendas().length > 0;
+  }
+}
